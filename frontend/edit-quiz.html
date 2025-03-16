@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Quiz</title>
+    <link rel="stylesheet" href="styles/syles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Ysabeau+Office:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h2>Edit Quiz</h2>
+        <a href="index.html" class="button-46">Quiz Catalog</a>
+    </header>
+    <main>
+        <form id="quiz-form" class="quiz__form">
+            <label for="quiz-name">Quiz Name:</label>
+            <input class="form__field" type="text" id="quiz-name" name="quiz-name" required="required">
+
+            <label for="quiz-description">Quiz Description:</label>
+            <textarea class="form__field" id="quiz-description" name="quiz-description" required="required"></textarea>
+
+            <div id="questions-container"></div>
+            <button id="add-question" class="button-46">Add Question</button>
+            <button type="submit" class="button-46 save-quiz">Save Quiz</button>
+        </form>
+    </main>
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/editQuiz.js"></script>
+</body>
+</html>
+
