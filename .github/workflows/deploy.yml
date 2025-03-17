@@ -1,0 +1,28 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Deploy to AWS EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ec2-3-69-176-221.eu-central-1.compute.amazonaws.com
+        username: ubuntu
+        key: ${{ secrets.AWS_SSH_KEY }}
+        script: |
+          cd /var/www/et-school-test || { git clone git@github.com:AmiraMukhina/ET-School-test.git /var/www/et-school-test; }
+          cd /var/www/et-school-test
+          git pull origin main
+          npm install  # Если проект на Node.js
+          npm run build  # Если нужна сборка
+          sudo systemctl restart nginx  # Если используешь Nginx
