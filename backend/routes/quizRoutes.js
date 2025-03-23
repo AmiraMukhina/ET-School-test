@@ -17,6 +17,8 @@ router.get('/all', (req, res) => {
 
 router.get('/:id', (req, res) => {
     const sql = `SELECT * FROM questions WHERE quiz_id = ${req.params.id}`;
+    // const sql = `SELECT * FROM questions WHERE quiz_id = ?`;
+
 
     db.query(sql, (err, results) => {
         if (err) {
@@ -115,5 +117,18 @@ router.delete('/:id', (req, res) => {
         res.status(200).json({ message: 'Quiz successfully deleted' });
     });
 });
+
+router.get('/:id/count', (req, res) => {
+    const sql = 'SELECT COUNT(*) AS questionCount FROM questions WHERE quiz_id = ?';
+
+    db.query(sql, [req.params.id], (err, results) => {
+        if (err) {
+            console.error("Error while retrieving question count:", err);
+            return res.status(500).json({ error: 'Error while retrieving question count' });
+        }
+        res.json({ count: results[0].questionCount });
+    });
+});
+
 
 export default router;
