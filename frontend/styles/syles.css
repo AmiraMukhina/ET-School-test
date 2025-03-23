@@ -8,7 +8,6 @@
 body {
     background-color: #f2f5f7;
     font-size: 18px;
-    line-height: 1em;
 }
 
 main {
@@ -35,9 +34,10 @@ a {
         text-decoration: none;
 }
 
-p {
-    line-height: 40px;
+.quiz-pre-info {
+    padding: 10px;
 }
+
 #quiz-list {
  
         max-width: 1200px;
