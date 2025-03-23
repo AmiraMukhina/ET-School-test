@@ -10,14 +10,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             const div = document.createElement("div");
             div.innerHTML = `<h2>${quiz.name}</h2>
             <p>${quiz.description}</p>
-            <p>Questions: ${quiz.question_count}</p>
-            <p>Completions: ${quiz.completions}</p>
+            <div class="quiz-pre-info">
+            <p id="questionCount">Questions: ${quiz.question_count}</p>
+            <p>Completions: ${quiz.completions}</p></div>
             <div class="control-button-container">
                 <button class="run-quiz button-46" data-id="${quiz.id}">Run</button>
                 <a href="edit-quiz.html?id=${quiz.id}" class="edit-quiz button-46">Edit</a>
                 <button class="delete-quiz button-46" data-id="${quiz.id}">Delete</button></div>`;
             quizList.appendChild(div);
-        });
+        });        
 
         quizList.addEventListener("click", async (event) => {
             if (event.target.classList.contains("run-quiz")) {
@@ -45,4 +46,3 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
 });
-
